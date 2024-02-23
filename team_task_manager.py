@@ -734,144 +734,6 @@ def vm_change_date(t_choice, index_dict, all_t_index):
             break
 
 
-def edit_profile():
-# User chooses whether they want to change their username or password.
-    print("=" * 200)
-    print("CHANGE LOGIN DETAILS")
-    while True:
-        edit_choice = ""
-        while edit_choice != "r":
-            if current_user != "admin":
-                edit_choice = input(f'''{"-" * 200}\nWhat do you want to change?
-Select one of the following options below:
-u - Change my username
-p - Change my password
-r - Return to the main menu
-Enter a letter: ''').lower()
-            else:
-                edit_choice = input(f'''{"-" * 200}\nWhat do you want to change?
-Select one of the following options below:
-p - Change my password
-r - Return to the main menu
-Enter a letter: ''').lower()
-            if current_user != "admin" and edit_choice == "u":
-                edit_name()
-            elif edit_choice == "p":
-                edit_pass()
-            elif edit_choice == "r":
-                break
-            else:
-                print("-" * 200)
-                print("You must enter letter/s from the menu.", end = " ")
-                print("(Note: choice input is space sensitive)")
-        print("-" * 200)
-        print("Returning you to the main menu.")
-        break        
-
-
-def edit_name():
-# Non-admin users can change their username stored in the 'users.txt' file.
-    print("-" * 200)
-    print("USERNAME CHANGE")
-    print("-" * 200)
-    # Request input of a desired username and confirmation.
-    print(f"Your current username is {current_user}.")
-    desired_name = input("New username: ")
-    confirm_name = input("Confirm new username: ")
-    # Check if the desired username already exists in our dictionary.
-    if desired_name in username_password:
-        print("-" * 200)
-        print("This username is taken.", end = " ")
-        print("(Note: usernames must be unique)")
-        print("No username was changed.")
-    elif semicolon_found(desired_name):
-        print("No username was changed.")
-    # Check if the new password and confirmed password match.
-    elif desired_name != confirm_name:
-        print("-" * 200)
-        print("Your usernames do no match.", end = " ")
-        print("(Note: login is case and space sensitive)")
-        print("No username was changed.")
-    elif character_exceed(desired_name):
-        print("No username was changed.")
-    else:
-        # If valid replace the user's username in user.txt file.
-        username_password[desired_name] = current_pass
-        with open("user.txt", "w") as user_file:
-            user_data = []
-            for key in username_password:
-                if key != current_user:
-                    user_data.append(f"{key};{username_password[key]}")
-            user_file.write("\n".join(user_data))
-            # Replace instances of the old username in t_comp[0].
-            for t in task_list:
-                if t['username'] == current_user:
-                    t['username'] = desired_name    
-            with open("tasks.txt", "w") as task_file:
-                task_list_to_write = []
-                for t in task_list:
-                    t_comp = [
-                        t['username'],
-                        t['title'],
-                        t['description'],
-                        t['due_date'].strftime(DT_FORMAT),
-                        t['assigned_date'].strftime(DT_FORMAT),
-                        'Yes' if t['completed'] else 'No',
-                        'Yes' if t['overdue'] else 'No'
-                    ]
-                    task_list_to_write.append(";".join(t_comp))
-                task_file.write("\n".join(task_list_to_write))
-            print("-" * 200)
-            print(f"Your username has been changed to '{desired_name}'.")
-            print("Your password has not been changed.")
-            print("This program will now close.")
-            print("-" * 200)
-            print(f"Goodbye {desired_name.capitalize()}!")
-            print("-" * 200)
-            exit()  # Program restart needed to work with the new name.
-
-
-def edit_pass():
-# Users can change their password stored in the 'users.txt' file.
-    print("-" * 200)
-    print("PASSWORD CHANGE")
-    print("-" * 200)
-    print(f"Your current password is '{username_password[current_user]}'.")
-    # Request input of a desired password and confirmation.
-    desired_pass = input("New password: ")
-    confirm_pass = input("Confirm new password: ")
-    # Check if the desired username already exists in our dictionary.
-    if desired_pass == username_password[current_user]:
-        print("-" * 200)
-        print("What you typed is identical to your current password.")
-        print("No change to your password was made.")
-    elif semicolon_found(desired_pass):
-        print("No change to your password was made.")
-    # Check if the new password and confirmed password match.
-    elif desired_pass != confirm_pass:
-        print("-" * 200)
-        print("Your passwords do no match.", end = " ")
-        print("(Note: login is case and space sensitive)")
-        print("No change to your password was made.")
-    elif character_exceed(desired_pass):
-        print("No change to your password was made.")
-    else:
-        # If valid replace the user's password in user.txt file.
-        username_password[current_user] = desired_pass
-        with open("user.txt", "w") as user_file:
-            user_data = []
-            for key in username_password:
-                user_data.append(f"{key};{username_password[key]}")
-            user_file.write("\n".join(user_data))
-        print("-" * 200)
-        print(f"Your password has been changed to '{desired_pass}'.")
-        print("This program will now close.")
-        print("-" * 200)
-        print(f"Goodbye {current_user.capitalize()}!")
-        print("-" * 200)
-        exit()  # Program restart required to continue with the new password.
-
-
 def generate_report():
 # Read/write tasks.txt to update the 'overdue' status if there's any change.
     with open("tasks.txt", "r") as task_file:
@@ -1103,6 +965,144 @@ def disp_stats():
             print(f"Percentage of tasks incomplete:{" "*17}{u_per_incomplete}%")                    
             print(f"Percentage of tasks incomplete and overdue:{" "*5}{u_per_late}%")        
             print("-------------------------------------------------------")
+
+
+def edit_profile():
+# User chooses whether they want to change their username or password.
+    print("=" * 200)
+    print("CHANGE LOGIN DETAILS")
+    while True:
+        edit_choice = ""
+        while edit_choice != "r":
+            if current_user != "admin":
+                edit_choice = input(f'''{"-" * 200}\nWhat do you want to change?
+Select one of the following options below:
+u - Change my username
+p - Change my password
+r - Return to the main menu
+Enter a letter: ''').lower()
+            else:
+                edit_choice = input(f'''{"-" * 200}\nWhat do you want to change?
+Select one of the following options below:
+p - Change my password
+r - Return to the main menu
+Enter a letter: ''').lower()
+            if current_user != "admin" and edit_choice == "u":
+                edit_name()
+            elif edit_choice == "p":
+                edit_pass()
+            elif edit_choice == "r":
+                break
+            else:
+                print("-" * 200)
+                print("You must enter letter/s from the menu.", end = " ")
+                print("(Note: choice input is space sensitive)")
+        print("-" * 200)
+        print("Returning you to the main menu.")
+        break        
+
+
+def edit_name():
+# Non-admin users can change their username stored in the 'users.txt' file.
+    print("-" * 200)
+    print("USERNAME CHANGE")
+    print("-" * 200)
+    # Request input of a desired username and confirmation.
+    print(f"Your current username is {current_user}.")
+    desired_name = input("New username: ")
+    confirm_name = input("Confirm new username: ")
+    # Check if the desired username already exists in our dictionary.
+    if desired_name in username_password:
+        print("-" * 200)
+        print("This username is taken.", end = " ")
+        print("(Note: usernames must be unique)")
+        print("No username was changed.")
+    elif semicolon_found(desired_name):
+        print("No username was changed.")
+    # Check if the new password and confirmed password match.
+    elif desired_name != confirm_name:
+        print("-" * 200)
+        print("Your usernames do no match.", end = " ")
+        print("(Note: login is case and space sensitive)")
+        print("No username was changed.")
+    elif character_exceed(desired_name):
+        print("No username was changed.")
+    else:
+        # If valid replace the user's username in user.txt file.
+        username_password[desired_name] = current_pass
+        with open("user.txt", "w") as user_file:
+            user_data = []
+            for key in username_password:
+                if key != current_user:
+                    user_data.append(f"{key};{username_password[key]}")
+            user_file.write("\n".join(user_data))
+            # Replace instances of the old username in t_comp[0].
+            for t in task_list:
+                if t['username'] == current_user:
+                    t['username'] = desired_name    
+            with open("tasks.txt", "w") as task_file:
+                task_list_to_write = []
+                for t in task_list:
+                    t_comp = [
+                        t['username'],
+                        t['title'],
+                        t['description'],
+                        t['due_date'].strftime(DT_FORMAT),
+                        t['assigned_date'].strftime(DT_FORMAT),
+                        'Yes' if t['completed'] else 'No',
+                        'Yes' if t['overdue'] else 'No'
+                    ]
+                    task_list_to_write.append(";".join(t_comp))
+                task_file.write("\n".join(task_list_to_write))
+            print("-" * 200)
+            print(f"Your username has been changed to '{desired_name}'.")
+            print("Your password has not been changed.")
+            print("This program will now close.")
+            print("-" * 200)
+            print(f"Goodbye {desired_name.capitalize()}!")
+            print("-" * 200)
+            exit()  # Program restart needed to work with the new name.
+
+
+def edit_pass():
+# Users can change their password stored in the 'users.txt' file.
+    print("-" * 200)
+    print("PASSWORD CHANGE")
+    print("-" * 200)
+    print(f"Your current password is '{username_password[current_user]}'.")
+    # Request input of a desired password and confirmation.
+    desired_pass = input("New password: ")
+    confirm_pass = input("Confirm new password: ")
+    # Check if the desired username already exists in our dictionary.
+    if desired_pass == username_password[current_user]:
+        print("-" * 200)
+        print("What you typed is identical to your current password.")
+        print("No change to your password was made.")
+    elif semicolon_found(desired_pass):
+        print("No change to your password was made.")
+    # Check if the new password and confirmed password match.
+    elif desired_pass != confirm_pass:
+        print("-" * 200)
+        print("Your passwords do no match.", end = " ")
+        print("(Note: login is case and space sensitive)")
+        print("No change to your password was made.")
+    elif character_exceed(desired_pass):
+        print("No change to your password was made.")
+    else:
+        # If valid replace the user's password in user.txt file.
+        username_password[current_user] = desired_pass
+        with open("user.txt", "w") as user_file:
+            user_data = []
+            for key in username_password:
+                user_data.append(f"{key};{username_password[key]}")
+            user_file.write("\n".join(user_data))
+        print("-" * 200)
+        print(f"Your password has been changed to '{desired_pass}'.")
+        print("This program will now close.")
+        print("-" * 200)
+        print(f"Goodbye {current_user.capitalize()}!")
+        print("-" * 200)
+        exit()  # Program restart required to continue with the new password.
 
 #==========Startup Notes==========
 # Use the following username and password to access the admin rights.
