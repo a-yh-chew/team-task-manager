@@ -26,6 +26,7 @@ The following features are available to non-admin users:
 --------------------
 users.txt
 --------------------
+This file is integral to the the functioning of the program.
 User login credentials are stored in the users.txt file.
 users.txt will be created on program launch if the file doesn't already exist.
 The file by default includes the string 'admin;password' serving as the admin credentials.
@@ -37,6 +38,7 @@ It's important to note that because users.txt uses ';' to separate components, s
 --------------------
 tasks.txt
 --------------------
+This file is integral to the the functioning of the program.
 Tasks information are stored in the tasks.txt file.
 tasks.txt will be created on program launch if the file doesn't already exist.
 The file will be empty by default.
