@@ -222,6 +222,7 @@ Enter letter/s: ''').lower()
     elif current_user == "admin" and choice == "gr":
         functions.generate_report()
     elif current_user == "admin" and choice == "ds":
+        functions.generate_report()
         functions.disp_stats()
     elif choice == "c":
         functions.edit_profile(current_user, current_pass)
