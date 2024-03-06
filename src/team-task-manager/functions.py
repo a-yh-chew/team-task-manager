@@ -142,7 +142,7 @@ Language notes
 '''
 #---------------Importing Libraries---------------
 from datetime import datetime as dt
-import math  # Enabling the use of 'math.floor'.
+from math import floor
 
 #---------------Constant Variables---------------
 # This is our chosen date format.
@@ -172,7 +172,7 @@ def semicolon_found(*args):
         return False
 
 
-def character_exceed(*args):
+def character_exceed(args):
     '''Checks if arguments exceed the length of 163 characters.
 
     (The 163 character limit is for the sake of presentation.
@@ -183,7 +183,7 @@ def character_exceed(*args):
     password.)
 
             Parameters:
-                    *args: Variable length argument list.
+                    args: An argument.
             
             Returns:
                     bool: 'Input too long' notice and True for success.
@@ -245,7 +245,9 @@ def reg_user():
         print("Passwords do no match.", end = " ")
         print("(Note: login is case and space sensitive)")
         print("No new user was added.")
-    elif character_exceed(new_username, new_password):
+    elif character_exceed(new_username):
+        print("No new user was added.")
+    elif character_exceed(new_password):
         print("No new user was added.")
     else:
         username_password[new_username] = new_password
@@ -382,7 +384,7 @@ def add_task():
                             days = divmod(seconds, 86400)
                             hours = divmod(days[1], 3600)
                         print(f'''Approximate time given to complete the task:
-{math.floor(days[0])} Days and {math.floor(hours[0])} hours.''')
+{floor(days[0])} Days and {floor(hours[0])} hours.''')
                     except ValueError:
                         print("-"*200)
                         print("Invalid date format.", end = " ")
@@ -1329,8 +1331,6 @@ def generate_report():
 
 def disp_stats():
     '''This feature can only be accessed by the admin user.
-    First the generate_report function is called. See generate_report.__doc__
-    for more information.
     Reads and rewrites tasks.txt in case the overdue status of a task changes.
     But primarily, reads information from task.txt and users.txt to display
     task overview and user overview statistics to the console.
@@ -1359,7 +1359,6 @@ def disp_stats():
     raising a ZeroDivisionError, preset overview outputs will be written
     into the console.
     '''
-    generate_report()
     with open("users.txt", "r") as user_file:
         user_data = user_file.read().split("\n")
 

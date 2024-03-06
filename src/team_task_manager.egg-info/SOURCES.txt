@@ -1,0 +1,12 @@
+LICENSE.md
+README.md
+pyproject.toml
+setup.py
+src/team-task-manager/__init__.py
+src/team-task-manager/functions.py
+src/team-task-manager/team_task_manager.py
+src/team_task_manager.egg-info/PKG-INFO
+src/team_task_manager.egg-info/SOURCES.txt
+src/team_task_manager.egg-info/dependency_links.txt
+src/team_task_manager.egg-info/requires.txt
+src/team_task_manager.egg-info/top_level.txt
