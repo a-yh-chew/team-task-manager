@@ -24,13 +24,13 @@ This is a simple task management system small businesses can use.
 A full list of the required packages and their respective dependencies can be found in the **requirements.txt** file of this project's [GitHub repository](https://github.com/a-yh-chew/team-task-manager).
 ## Installation
 
-1.  It's recommended to create a virtual environment (see [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) for instructions of how to do this) to house the team-task-manager package and it's package dependencies, though this is optional.
+1.  It's recommended to create a virtual environment (see [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) for instructions of how to do this) to house the team-task-manager package and its package dependencies, though this is optional.
 ####
 2.  Make sure that your environment has all the required packages installed.
 ####
-3.  Next, run the installation syntax presented at the top of [https://pypi.org/project/team-task-manager/](https://pypi.org/project/team-task-manager/) that starts with 'pip install'.
+3.  Next, run the installation syntax presented at the top of [https://pypi.org/project/team-task-manager/](https://pypi.org/project/team-task-manager/) starting with 'pip install'.
 ####
-4.  Once the team-task-manager package and it's package dependencies are installed in your environment, assuming you have followed a process resembling the one [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), you should be able to locate team_task_manager.py through the path:
+4.  Once the team-task-manager package and the required packages are installed in your environment, assuming you have followed a process resembling the one [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), you should be able to locate team_task_manager.py through the path:
 ~~~
 project_directory\.venv\Lib\site-packages\team-task-manager\team_task_manager.py
 ~~~
