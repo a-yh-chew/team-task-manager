@@ -21,15 +21,24 @@ This is a simple task management system small businesses can use.
 - pytest 8.0.2 or newer is recommended.
 - twine 5.0.0 or newer is recommended.
 
+A full list of the required packages and their respective dependencies can be found in the **requirements.txt** file of this project's [GitHub repository](https://github.com/a-yh-chew/team-task-manager).
 ## Installation
 
-Install the team-task-manager package with pip
+1.  It's recommended to create a virtual environment (see [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) for instructions of how to do this) to house the team-task-manager package and it's package dependencies, though this is optional.
+####
+2.  Make sure that your environment has all the required packages installed.
+####
+3.  Next, run the installation syntax presented at the top of [https://pypi.org/project/team-task-manager/](https://pypi.org/project/team-task-manager/) that starts with 'pip install'.
+####
+4.  Once the team-task-manager package and it's package dependencies are installed in your environment, assuming you have followed a process resembling the one [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), you should be able to locate team_task_manager.py through the path:
+~~~
+project_directory\.venv\Lib\site-packages\team-task-manager\team_task_manager.py
+~~~
+####
+5.  Open and run team_task_manager.py in your preferred IDE to use the team-task-manager, operated through inputs to the console.
 
-```
-pip install team-task-manager
-```
 ## How it works
-#### When the script (*team_task_manager.py*) is initiated the following files are generated:
+#### When team_task_manager.py is run the following files are generated:
 - users.txt - Containing user login information.
 - tasks.txt - Containing tasks records. 
 ---
@@ -55,7 +64,7 @@ pip install team-task-manager
   - Exiting the program
 ## Contributing
 
-If you find a bug, have ideas for new features, other improvements, or require more clarity on the project please submit an [issue](https://github.com/a-yh-chew/team-task-manager/issues).
+If you find a bug, have ideas for new features, other improvements, or require more clarity on this project please submit an [issue](https://github.com/a-yh-chew/team-task-manager/issues).
 
 
 
@@ -67,3 +76,4 @@ Angela Chew (GitHub: [a-yh-chew](https://github.com/a-yh-chew), e-mail: a.yh.che
 ## License
 
 [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0.txt.)
+
