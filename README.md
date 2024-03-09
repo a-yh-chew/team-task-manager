@@ -23,7 +23,10 @@ This is a simple task management system small businesses can use.
 
 A full list of the required packages and their respective dependencies can be found in the **requirements.txt** file of this project's [GitHub repository](https://github.com/a-yh-chew/team-task-manager).
 ## Installation
+If you don't have Python installed on your system, see [here](https://wiki.python.org/moin/BeginnersGuide/Download) for instructions of how to do this. Make sure your version of Python is 3.12 or newer.
 
+From Python version 3.4 onwards pip is included by default. With Python and pip you can open a terminal and use pip-commands to install packages.
+###
 1.  It's recommended to create a virtual environment (see [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) for instructions of how to do this) to house the team-task-manager package and its package dependencies, though this is optional.
 ####
 2.  Make sure that your environment has all the required packages installed.
@@ -70,10 +73,9 @@ If you find a bug, have ideas for new features, other improvements, or require m
 
 ## Author
 
-Angela Chew (GitHub: [a-yh-chew](https://github.com/a-yh-chew), e-mail: a.yh.chew@gmail.com)
+Angela Chew (GitHub: [a-yh-chew](https://github.com/a-yh-chew), E-mail: a.yh.chew@gmail.com)
 
 
 ## License
 
-[Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0.txt.)
-
+[MIT](https://choosealicense.com/licenses/mit/)

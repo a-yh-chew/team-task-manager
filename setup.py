@@ -14,12 +14,12 @@ setup(
     url="https://github.com/a-yh-chew/team-task-manager.git",
     author="a-yh-chew",
     author_email="a.yh.chew@gmail.com",
-    license="Apache Software",
+    license="MIT",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Win32 (MS Windows)",
         "Intended Audience :: System Administrators",
-        "License :: OSI Approved :: Apache Software License",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: Microsoft :: Windows",
         "Programming Language :: Python :: 3.12",
         "Topic :: System :: Systems Administration"
