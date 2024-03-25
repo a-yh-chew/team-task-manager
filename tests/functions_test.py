@@ -1,4 +1,4 @@
-import src.package.functions as functions
+import team_task_manager.functions as functions
 import pytest
 
 @pytest.mark.parametrize(
